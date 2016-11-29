@@ -2,7 +2,7 @@ package com.durieudufaux.demoproject;
 
 
 public class App {
-    public static void main(java.lang.String[] args) {
+    public static void main(java.lang.String[] args) throws java.lang.Exception {
         com.durieudufaux.demoproject.A a = new com.durieudufaux.demoproject.A();
         com.durieudufaux.demoproject.B b = new com.durieudufaux.demoproject.B(a);
         b.methodBTuna();
