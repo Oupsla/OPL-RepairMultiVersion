@@ -113,8 +113,9 @@ public class MethodVersioningProcessor extends AbstractProcessor<CtClass> {
 		versionField.setParent(ctClass);
 		//System.out.println(versionField.getDeclaringType());
 		//System.out.println(versionField.getParent());
-		
-		CtFieldRead ctFieldRead = getFactory().Core().createFieldRead().setVariable(versionField.getReference());
+
+		CtFieldRead ctFieldRead = (CtFieldRead)getFactory().Core().createFieldRead();
+		ctFieldRead.setVariable(versionField.getReference());
 		ctSwitch.setSelector(ctFieldRead);
 		nwMethBody.addStatement(ctSwitch);
 		

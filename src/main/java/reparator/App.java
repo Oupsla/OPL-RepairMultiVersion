@@ -28,7 +28,6 @@ public class App {
 	// -nbrCommit 3 -projectPath ressources/jsoup -sourcePath src/main -classPath ressources/jsoup/target:/home/dufaux/.m2/repository/junit/junit/4.5/junit-4.5.jar
 	public static void main(String[] args) {
 
-		
 		// create Options object
     	Options options = new Options();
     	// add t option
