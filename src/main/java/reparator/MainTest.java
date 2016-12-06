@@ -1,18 +1,5 @@
 package reparator;
 
-import java.io.File;
-import java.io.FilenameFilter;
-import java.lang.instrument.Instrumentation;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.LinkedList;
-import java.util.List;
-
-import org.junit.internal.TextListener;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.reflections.Reflections;
@@ -22,8 +9,12 @@ import org.reflections.util.ClasspathHelper;
 import org.reflections.util.ConfigurationBuilder;
 import org.reflections.util.FilterBuilder;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
-import java.util.Vector;
 
 
 public class MainTest {
@@ -39,8 +30,6 @@ public class MainTest {
 
 		
 		String repertoire = "org.jsoup";
-		final URL[] urls = { new File(repertoire).toURI().toURL()};
-		URLClassLoader cl = URLClassLoader.newInstance(urls);
 
 		Reflections reflections = new Reflections(new ConfigurationBuilder()
 			    .setScanners(new SubTypesScanner(false /* don't exclude Object.class */), new ResourcesScanner())

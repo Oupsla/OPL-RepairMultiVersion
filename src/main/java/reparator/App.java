@@ -1,19 +1,16 @@
 package reparator;
 
 import org.apache.commons.cli.*;
-
 import spoon.Launcher;
 import util.CmdTools;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class App {
 
 
-	private static final String jouvenceDir = "./ressources";
+	private static final String JOUVENCE_DIR = "./ressources";
 	private static String jouvenceFile = "jouvence_linux.sh";
-	//private static String jouvenceFile = "jouvence";
 	private static String jouvenceBranch = "master";
 
 	private static ArrayList<VersionSniper> snipers;
@@ -63,7 +60,7 @@ public class App {
 		System.out.println("execute git to generate "+nbr+" folders");
 
 
-		CmdTools.executeSH(jouvenceDir, jouvenceFile, projectPath, (nbr+""), jouvenceBranch);
+		CmdTools.executeSH(JOUVENCE_DIR, jouvenceFile, projectPath, nbr+"", jouvenceBranch);
 		
 		
 

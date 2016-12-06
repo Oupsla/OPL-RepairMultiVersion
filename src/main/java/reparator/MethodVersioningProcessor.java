@@ -37,7 +37,6 @@ public class MethodVersioningProcessor extends AbstractProcessor<CtClass> {
 		for(CtMethod<?> method : methods){
 			if(method.getBody() != null && !method.hasModifier(ModifierKind.STATIC)){
 				newMethodsVersions = new ArrayList<CtMethod>();
-				//List<CtMethod<?>> oldMethods = new ArrayList<CtMethod<?>>();
 				for(VersionSniper sniper : snipers){
 					newMethod = createVersionMethod(method, sniper);
 					if(newMethod != null){
@@ -74,7 +73,6 @@ public class MethodVersioningProcessor extends AbstractProcessor<CtClass> {
 						//remove annotation (to avoid @override for example)
 						newMethod.setAnnotations(new ArrayList<CtAnnotation<?>>());
 						
-						//CtMethod newMethod = getFactory().Core().createMethod();
 						CtBlock newBlock = getFactory().Core().clone(oldMethod.getBody());
 
 						newMethod.setBody(newBlock);
@@ -92,7 +90,6 @@ public class MethodVersioningProcessor extends AbstractProcessor<CtClass> {
 	private void createFonctionDAppelSwitch(CtClass ctClass, CtMethod<?> methodeSource, List<CtMethod> methodesDeVersions) {
 		CtReturn retur = null;
 		
-		//CtMethod originalMethod = (CtMethod) ctClass.getMethodsByName(methodeSource.getSimpleName()).get(0);
 
 		CtTypeReference refToInt = getFactory().Code().createCtTypeReference(Integer.class);
 		
@@ -109,10 +106,7 @@ public class MethodVersioningProcessor extends AbstractProcessor<CtClass> {
 		
 		CtSwitch ctSwitch = getFactory().Core().createSwitch();
 		
-		//System.out.println("VersionField ==== "+versionField);
 		versionField.setParent(ctClass);
-		//System.out.println(versionField.getDeclaringType());
-		//System.out.println(versionField.getParent());
 
 		CtFieldRead ctFieldRead = (CtFieldRead)getFactory().Core().createFieldRead();
 		ctFieldRead.setVariable(versionField.getReference());
@@ -120,8 +114,6 @@ public class MethodVersioningProcessor extends AbstractProcessor<CtClass> {
 		nwMethBody.addStatement(ctSwitch);
 		
 		int i =0;
-		//System.out.println("---------------------------------");
-		//System.out.println(methodesDeVersions);
 		for (CtMethod methodVersion : methodesDeVersions) {
 			
 			CtCase newCase = getFactory().Core().createCase();
@@ -133,21 +125,14 @@ public class MethodVersioningProcessor extends AbstractProcessor<CtClass> {
 			//crée le tableau de parametre passé à l'appel de fonction. 
 			List<CtExpression> exps = new ArrayList<CtExpression>();
 			for(CtParameter<?> arg : arguments){ 
-				//System.out.println("arg ==="+arg.getSignature());
 				CtExpression expArg = getFactory().Code().createCodeSnippetExpression(arg.getSimpleName());
 				exps.add(expArg);
-				//System.out.println("DEFAULT EXPRESSION =");
-				//System.out.println(expArg);
 			}
 			
 			//cree l'appel de fonction
 			
-			//System.out.println("---");
-			//System.out.println(arguments);
 			CtInvocation callFunction = getFactory().Core().createInvocation();
-			//System.out.println(methodVersion);
 			callFunction.setExecutable(methodVersion.getReference());
-			//System.out.println(exps.size());
 			callFunction.setArguments(exps);
 			
 			//ajoute "return" devant si la fonction retourne quelque chose
