@@ -11,7 +11,7 @@ public class CmdTools {
 
 
         try {
-            ProcessBuilder pb = new ProcessBuilder((relativePath+'/'+fileName), arg1, arg2, arg3);
+            ProcessBuilder pb = new ProcessBuilder((relativePath + '/' + fileName), arg1, arg2, arg3);
             Process p = null;
             p = pb.start();
 
