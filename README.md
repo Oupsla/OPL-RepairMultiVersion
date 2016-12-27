@@ -1,5 +1,5 @@
 Last update: 29/11/2016
-# Repair with multi-version execution
+# Repair with multi-version execution [![Coverage Status](https://coveralls.io/repos/github/Oupsla/OPL-RepairMultiVersion/badge.svg?branch=master)](https://coveralls.io/github/Oupsla/OPL-RepairMultiVersion?branch=master)
 OPL - Theme 3: Automatic Diagnosis and Repair
 ## Authors
 - [Denis Hamann](#https://github.com/denishamann)

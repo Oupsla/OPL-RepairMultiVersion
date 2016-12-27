@@ -28,7 +28,6 @@ public class MainTest {
 		classLoadersList.add(ClasspathHelper.contextClassLoader());
 		classLoadersList.add(ClasspathHelper.staticClassLoader());
 
-		
 		String repertoire = "org.jsoup";
 
 		Reflections reflections = new Reflections(new ConfigurationBuilder()

@@ -79,12 +79,6 @@ public class GitUtils {
                 }
 
                 if (foundInThisBranch) {
-
-                    /* System.out.println(commit.getName());
-                    System.out.println(commit.getAuthorIdent().getName());
-                    System.out.println(new Date(commit.getCommitTime()));
-                    System.out.println(commit.getFullMessage()); */
-
                     File destDir = new File(TMPFOLDER + folder + "/" +  commit.getName());
                     destDir.mkdirs();
 

@@ -3,9 +3,6 @@ package reparator;
 import spoon.Launcher;
 import spoon.reflect.factory.Factory;
 
-/**
- * Created by jvdur on 11/01/2016.
- */
 public class VersionSniper {
 	
 

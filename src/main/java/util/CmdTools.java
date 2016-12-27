@@ -2,9 +2,6 @@ package util;
 
 import java.io.IOException;
 
-/**
- * Created by jvdur on 11/01/2016.
- */
 public class CmdTools {
 
     public static void executeSH(String relativePath, String fileName, String arg1, String arg2, String arg3) {
