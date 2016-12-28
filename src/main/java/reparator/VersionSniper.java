@@ -14,20 +14,14 @@ public class VersionSniper {
         spoon = new Launcher();
     }
 
-    /**
-     * Constructor
-     * @param projectPath
-     * @param numero
-     */
-    public VersionSniper(String projectPath, String innerProjectPath, String classPath, int numero) {
-        this.numero = numero;
-        this.pathToSource = projectPath+'_'+numero+'/'+innerProjectPath;
+    public VersionSniper(String gitProject, String version, String srcPath, String classPath) {
+        this.pathToSource = App.TMPFOLDER + gitProject + "/" + version + "/" + srcPath;
 
-        
-		System.out.println("spoon sources "+pathToSource);
-		System.out.println("with classPath = "+classPath);
+		System.out.println("Adding sniper to " + pathToSource);
+		System.out.println("with classPath = " + classPath);
+        System.out.flush();
 		
-        spoon.run(new String[]{"-i",pathToSource,"--source-classpath",classPath});
+        spoon.run(new String[]{"-i", pathToSource, "--source-classpath", classPath});
     }
 
     public int getId(){

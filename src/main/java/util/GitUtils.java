@@ -16,19 +16,18 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
+import reparator.App;
 
 public class GitUtils {
-
-    private static final String TMPFOLDER = "/tmp/opl/";
 
 
     public static String cloneRepo(String remoteUrl, String folder) throws IOException, GitAPIException {
         // prepare a new folder for the cloned repository
-        File directory = new File(TMPFOLDER + folder);
+        File directory = new File(App.TMPFOLDER + folder);
         directory.mkdirs();
         FileUtils.cleanDirectory(directory);
 
-        directory = new File(TMPFOLDER + folder + "/master");
+        directory = new File(App.TMPFOLDER + folder + "/master");
 
         // then clone
         System.out.println("Cloning from " + remoteUrl + " to " + directory);
@@ -43,7 +42,8 @@ public class GitUtils {
         return result.getRepository().getDirectory().toString();
     }
 
-    public static void getAll(String remoteUrl, String folder) throws IOException, GitAPIException {
+    public static void getAll(String remoteUrl, String folder, int nbCommit) throws IOException, GitAPIException {
+        int currentCommit = 0;
         String localUrl = cloneRepo(remoteUrl, folder);
 
         Repository repo = new FileRepository(localUrl);
@@ -79,16 +79,22 @@ public class GitUtils {
                 }
 
                 if (foundInThisBranch) {
-                    File destDir = new File(TMPFOLDER + folder + "/" +  commit.getName());
+                    File destDir = new File(App.TMPFOLDER + folder + "/" +  commit.getName());
                     destDir.mkdirs();
 
-                    Git.cloneRepository().setURI( TMPFOLDER + folder + "/master/.git" ).setDirectory(destDir).call();
+                    Git.cloneRepository().setURI(App.TMPFOLDER + folder + "/master/.git" ).setDirectory(destDir).call();
 
                     Repository repo2 = new FileRepository(destDir + "/.git");
                     Git git2 = new Git(repo2);
                     git2.checkout().setName(commit.getName()).call();
 
                     System.out.println("Cloning repository from commit : " + commit.getName() + " to " + destDir);
+
+                    currentCommit++;
+                    if(currentCommit >= nbCommit){
+                        System.out.println("Number of max commit reached : " + currentCommit);
+                        return;
+                    }
                 }
             }
         }

@@ -57,8 +57,8 @@ public class MainTest {
 
 					 System.out.println("MODIF METHOD "+m.getName());
 				      while(vfield.getInt(null) < vmaxfield.getInt(null)){
-				    	  runTests();
-				        vfield.setInt(null, vfield.getInt(null)+1);
+						  runTests();
+						  vfield.setInt(null, vfield.getInt(null)+1);
 				      }
 				 }catch(NoSuchFieldException e){
 					 //ne rien faire
