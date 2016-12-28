@@ -3,14 +3,12 @@ package reparator;
 import org.apache.commons.cli.*;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import spoon.Launcher;
-import util.CmdTools;
 import util.GitUtils;
 
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class App {
 
