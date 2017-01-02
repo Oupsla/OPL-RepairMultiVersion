@@ -34,6 +34,7 @@ Our goal is to improve the software update process in such a way as to encourage
 Notre objectif principal lors de la réalisation de ce projet a été de rendre ce projet plus facilement utilisable (agnostique du système d'exploitation, meilleure interface de commandes, ...). 
 
 ### Overview
+(Mockups, workflows)
 
 ### Algorithm
 
@@ -46,12 +47,9 @@ Auparavant la création des différentes version du projet que l'on souhaite tes
 
 Spoon is an open source library to analyze, rewrite, transform, transpile Java source code. It parses source files to build a well-designed AST with powerful analysis and transformation API. L'utilité de Spoon dans ce projet est d'extraire les méthodes dans chaque versions pour les remplacer avec celles de la dernière version. Pour ce faire ...
 
-But?
-Overview (Mockups, workflows)
-Algorithme
-Architecture (langage, librairies utilisées, modules et classes)
-Implémentation (code/patterns/idioms élégants ou efficaces, taille)
-Utilisation (screenshots, etc)
+### Utilisation
+(screenshots, etc)
+
 ## Evaluation
 Efficacité
 Complexité
@@ -60,7 +58,6 @@ Facilité d'utilisation
 
 ## Performance
 Dans les grands projets il y a énormément de versions différentes. Puisque notre algorithme par défaut reprend toute les versions d'un projet pour pouvoir ensuite rechercher le code dans ces versions antérieures qui corrigera le bug de la version actuelle. Le temps d'exécution peut vite être très important, de ce fait nous avons implémenté une limite en précisant le nombre de version maximum que nous voulons parcourir.
-
 
 
 ## Limitation
