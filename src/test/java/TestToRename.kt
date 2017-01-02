@@ -1,11 +1,11 @@
 import org.junit.*
-import reparator.VersionSniper
-
+import util.GitUtils
 /**
  * Created by Apolloch on 29/12/2016.
  *to launch tests : mvn test
  */
 class TestToRename {
+
     @Before
     fun beforeTesting() {
         println("------------------")
@@ -24,6 +24,10 @@ class TestToRename {
         Assert.assertEquals(1, 1 * 1)
     }
 
+    @Test
+    fun testGitUtils() {
+        Assert.assertEquals(GitUtils.cloneRepo("https://github.com/Oupsla/OPL-TestRepo", "test-repo"), "/tmp/opl/test-repo/master/.git")
+    }
 
     @Ignore
     @Test
