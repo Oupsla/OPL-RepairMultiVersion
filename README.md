@@ -55,9 +55,13 @@ Utilisation (screenshots, etc)
 ## Evaluation
 Efficacité
 Complexité
-Performance
 Facilité d'utilisation
 ...
+
+## Performance
+Dans les grands projets il y a énormément de versions différentes. Puisque notre algorithme par défaut reprend toute les versions d'un projet pour pouvoir ensuite rechercher le code dans ces versions antérieures qui corrigera le bug de la version actuelle. Le temps d'exécution peut vite être très important, de ce fait nous avons implémenté une limite en précisant le nombre de version maximum que nous voulons parcourir.
+
+
 
 ## Limitation
 
