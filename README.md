@@ -20,7 +20,7 @@ OPL - Theme 3: Automatic Diagnosis and Repair
 
 Software systems are constantly evolving, with new versions and patches being released on a continuous basis. Unfortunately, software updates present a high risk, with many releases introducing new bugs and security vulnerabilities.
 
-In this work, we propose a technique for improving the reliability and security of software updates. Software updates are an integral part of the software life-cycle, but present a high failure rate. Many users and administrators refuse to upgrade their software and rely instead on outdated versions, which often leaves them exposed to critical bugs and security vulnerabilities. One of the main reasons for which users hesitate to install updates is that a significant number of them result in failures. 
+In this work, we propose a technique for improving the reliability and security of software updates. Software updates are an integral part of the software life-cycle, but present a high failure rate. Many users and administrators refuse to upgrade their software and rely instead on outdated versions, which often leaves them exposed to critical bugs and security vulnerabilities. One of the main reasons for which users hesitate to install updates is that a significant number of them result in failures.
 
 We wrote an application that embeds the history of a software application at runtime (using [Spoon](https://github.com/INRIA/spoon)). The evaluation section is an analysis of how it works on a real Github repository.
 Our application is an improvement of the existing prototype [Code rewinder](https://github.com/dufaux/IDL-1). We will evaluate our application by showing that it can successfully detect potential crashes in several real applications.
@@ -31,7 +31,7 @@ Our goal is to improve the software update process in such a way as to encourage
 
 ## Technical work
 ### But
-Notre objectif principal lors de la réalisation de ce projet a été de rendre ce projet plus facilement utilisable (agnostique du système d'exploitation, meilleure interface de commandes, ...). 
+Notre objectif principal lors de la réalisation de ce projet a été de rendre ce projet plus facilement utilisable (agnostique du système d'exploitation, meilleure interface de commandes, ...).
 
 ### Overview
 (Mockups, workflows)
@@ -56,14 +56,23 @@ Complexité
 Facilité d'utilisation
 ...
 
-## Performance
-Dans les grands projets il y a énormément de versions différentes. Puisque notre algorithme par défaut reprend toute les versions d'un projet pour pouvoir ensuite rechercher le code dans ces versions antérieures qui corrigera le bug de la version actuelle. Le temps d'exécution peut vite être très important, de ce fait nous avons implémenté une limite en précisant le nombre de version maximum que nous voulons parcourir.
+## Ease of use
+The project has been refactored to not use a bash script to retrieve all the versions of a github repository. This mean that the project is not limited by this script anymore and can be use on any platform.  
+The user can launch our script simply by providing a github username and a project name (this project must be public) and our system will take care of everything.
+We could have provided a GUI but at this point it seemed unnecessary because our system does not have many options or alternatives of treatment.
 
+
+## Performance
+The base of our system retrieve all versions of a project but in most of projects, there are a lot of commits and branches so we had to change that.
+The user can now specify a number of commits (from the most recent to the number) that the script will retrieve. The execution time is therefore relative to the number of commit that our system has to process. This mean that the user have to select between efficiency or speed.
+
+If a GUI is developped, we can also provide the functionnality that a user select revelant commit (it is not necessary for example, to select a commit that edit documentation because this version will not resolve a test).
 
 ## Limitation
 
  - Le projet que l'on souhaite testé et réparer via notre outil devra obligatoirement être en Java.
  - Il faut que le projet avec lequel on veut utiliser cet outil soit déjà bien testé unitairement sinon on ne pourra rien en tirer puisque notre projet utilise ces tests pour pouvoir trouver à travers les versions une façon de réparer notre application.
+ - Il ne faut pas que le projet soit trop grand sinon il faut limité le nombre de commit
 
 ## Discussion
 Dans tout projet, lorsque nous réalisons des tests unitaires c'est dans un but précis, empêcher la régression. Avec ces tests unitaires le développeur s'en sers pour s'assurer au fur et à mesure des versions qu'il développe qu'il ne casse rien d'existant. S'il y a une erreur les tests ne passeront plus et le développeur sera directement conscient d'une régression. L'utilité de l'outils que nous proposons aujourd'hui pourrait être à débattre donc puisque pour utiliser cet outil le développeur a besoin d'avoir de bons tests dans son code mais s'il a des bons tests normalement il n'effectue pas de régression ou bien si c'est le cas il en est conscient. Dans ce cas de figure l'utilité de notre outil devient assez faible.
@@ -75,4 +84,3 @@ Dans tout projet, lorsque nous réalisons des tests unitaires c'est dans un but 
  - [Safe Software Updates via Multi-version Execution](http://srg.doc.ic.ac.uk/files/papers/mx-icse-13.pdf)
  - [Object-Level Recombination of Commodity Applications](http://people.scs.carleton.ca/~soma/pubs/bfoster-gecco-2010.pdf)
  - [Spoon](http://spoon.gforge.inria.fr/)
-
