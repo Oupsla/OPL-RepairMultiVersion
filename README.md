@@ -44,14 +44,54 @@ For the creation of different versions of a project that we want to test and rep
 [Spoon](https://github.com/INRIA/spoon) is an open source library to analyze, rewrite, transform, transpile Java source code. It parses source files to build a well-designed AST with powerful analysis and transformation API. The role of [Spoon](https://github.com/INRIA/spoon) in this project is to extract the methods of  each version and to replace them with those from the last version.
 
 ### Use
-(screenshots, etc)
+Simply configure the app via the app_conf.json file then compile with maven (cmd : "mvn compile") then run the class main.App
+the config file should look like this:
+{
+  "junit_jar":"C:/Users/Apolloch/.m2/repository/junit/junit/4.12/junit-4.12.jar",
+  "github_project":"OPL-TestRepo",
+  "github_user_name":"Oupsla",
+  "src_path_in_project" : "src/main/"
+}
+with :
+* junit_jar : the location of junit
+* github_project : the project to test
+* github_user_name : your github username
+* src_path_in_project : the sources location within the "github_project"
 
 ## Evaluation
-Efficacité
-Complexité
-Facilité d'utilisation
-...
+The software we produced is achieving the goal we expressed in the first part of this report.
+here is an example of the production of this software :
 
+gitUsername = Oupsla
+gitProject = OPL-TestRepo
+srcPath = src/main/
+classPath = C:/Users/Apolloch/.m2/repository/junit/junit/4.12/junit-4.12.jar
+number of commits = 2
+Calling Git to generate 2 folders from : https://github.com/Oupsla/OPL-TestRepo
+Cloning from https://github.com/Oupsla/OPL-TestRepo to C:\Users\Apolloch\IdeaProjects\OPL-RepairMultiVersion\tmp\oplOPL-TestRepo\master
+Cloning repository: C:\Users\Apolloch\IdeaProjects\OPL-RepairMultiVersion\tmp\oplOPL-TestRepo\master\.git
+Commits of branch: refs/heads/master
+Cloning repository from commit : bb5d35f3b98986b73cda28092f1858390e48548d to C:\Users\Apolloch\IdeaProjects\OPL-RepairMultiVersion\tmp\oplOPL-TestRepo\bb5d35f3b98986b73cda28092f1858390e48548d
+Cloning repository from commit : 3e0211fa3b8ca145543356707c90f63c70754aad to C:\Users\Apolloch\IdeaProjects\OPL-RepairMultiVersion\tmp\oplOPL-TestRepo\3e0211fa3b8ca145543356707c90f63c70754aad
+Number of max commit reached : 2
+Adding sniper to C:\Users\Apolloch\IdeaProjects\OPL-RepairMultiVersion\tmp\oplOPL-TestRepo/3e0211fa3b8ca145543356707c90f63c70754aad/src/main/
+with classPath = C:/Users/Apolloch/.m2/repository/junit/junit/4.12/junit-4.12.jar
+Adding sniper to C:\Users\Apolloch\IdeaProjects\OPL-RepairMultiVersion\tmp\oplOPL-TestRepo/bb5d35f3b98986b73cda28092f1858390e48548d/src/main/
+with classPath = C:/Users/Apolloch/.m2/repository/junit/junit/4.12/junit-4.12.jar
+Spoon the master as the new project template = C:\Users\Apolloch\IdeaProjects\OPL-RepairMultiVersion\tmp\oplOPL-TestRepo/master/src/main/
+with classPath = C:/Users/Apolloch/.m2/repository/junit/junit/4.12/junit-4.12.jar
+MODIF CLASS main.A
+MODIF METHOD barA
+runCount = 4
+FailureCount = 0
+
+VERSION FOUND :
+fooA : 0
+barA : 0
+
+---- End of program ----
+
+The program effectively retrieve all the commits of the project , and test all the versions creates from thoses commits with the latests tests.If the program find a test-passing version it says wich version it found.
 ## Ease of use
 The project has been refactored to not use a bash script to retrieve all the versions of a github repository. This mean that the project is not limited by this script anymore and can be use on any platform.  
 The user can launch our script simply by providing a github username and a project name (this project must be public) and our system will take care of everything.

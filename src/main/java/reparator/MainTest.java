@@ -44,7 +44,7 @@ public class MainTest {
                     Field vmaxfield = c.getDeclaredField(m.getName()+"_version_max");
 
                     System.out.println("MODIF METHOD "+m.getName());
-                     while(vfield.getInt(null) < vmaxfield.getInt(null)){
+                     while(vfield.getInt(null) <= vmaxfield.getInt(null)){
                          runTests();
                          vfield.setInt(null, vfield.getInt(null)+1);
                      }

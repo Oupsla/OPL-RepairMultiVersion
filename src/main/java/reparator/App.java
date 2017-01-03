@@ -37,7 +37,7 @@ public class App {
 		}
 		JSONObject config = new JSONObject(configContent);
 
-		reparator(config.getString("github_user_name"),config.getString("github_project"), config.getString("src_path_in_project"), config.getString("junit_jar"), 2);
+		reparator(config.getString("github_user_name"),config.getString("github_project"), config.getString("src_path_in_project"), config.getString("junit_jar"), 3);
 
 		if(true)
 			return;
