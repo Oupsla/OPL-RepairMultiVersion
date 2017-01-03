@@ -26,7 +26,6 @@ public class MainTest {
 	}
 
 	public static void runAllTests() throws ClassNotFoundException, IOException, IllegalAccessException {
-		System.out.println(classesToTestDir);
 		Class[] allClasses = getClasses(classesToTestDir);
 		for(Class<?> c : allClasses){
             if(c.getName().endsWith("Test")){
@@ -58,7 +57,7 @@ public class MainTest {
 	}
 
 
-	public static void runTests() {
+	public static boolean runTests() {
 		Class[] classes = new Class[testsClasses.size()];
 		classes = testsClasses.toArray(classes);
 		
@@ -66,6 +65,10 @@ public class MainTest {
 		System.out.println("runCount = "+result.getRunCount());
 		System.out.println("FailureCount = "+result.getFailureCount());
 		System.out.println("");
+		if(result.getFailureCount()==0)
+			return true;
+		else
+			return false ;
 
 		
 		
@@ -121,7 +124,6 @@ public class MainTest {
 		}
 		File[] files = directory.listFiles();
 		for (File file : files) {
-			System.out.println(file.getName());
 			if (file.isDirectory()) {
 				assert !file.getName().contains(".");
 				classes.addAll(findClasses(file, packageName + "." + file.getName()));

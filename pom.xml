@@ -50,6 +50,7 @@
 				<configuration>
 					<format>xml</format>
 					<aggregate>true</aggregate>
+					<check/>
 				</configuration>
 			</plugin>
 			<plugin>
