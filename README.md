@@ -6,14 +6,10 @@ OPL - Theme 3: Automatic Diagnosis and Repair
 - [Nicolas Delperdange](https://github.com/Oupsla)
 - [Benjamin Coenen](https://github.com/bnjjj)
 
-## Table of Contents
-- **[Introduction](#introduction)**   
-- **[Technical work](#technical-work)**   
-- **[Evaluation](#evaluation)**
-- **[Limitations](#limitation)**  
-- **[Discussion](#discussion)**
-- **[Conclusion](#conclusion)**
-- **[Glossary](#glossary)**
+
+
+## Table of contents
+[TOC]
 
 ## Introduction
 
@@ -29,7 +25,7 @@ We get into this problem using a simple but effective multiversion based approac
 Our goal is to improve the software update process in such a way as to encourage developpers to run the unit tests also on old versions of the software.
 
 ## Technical work
-### But
+### Goal
 Notre objectif principal lors de la réalisation de ce projet a été de rendre ce projet plus facilement utilisable (agnostique du système d'exploitation, meilleure interface de commandes, ...).
 
 ### Overview
@@ -94,5 +90,3 @@ Software update cannot be avoided during the maintenance process. It also presen
  - [Object-Level Recombination of Commodity Applications](http://people.scs.carleton.ca/~soma/pubs/bfoster-gecco-2010.pdf)
  - [Spoon](http://spoon.gforge.inria.fr/)
  - [Evolutionary Repair of Faulty Software](https://goo.gl/K4Nb3g)
- - 
- 
