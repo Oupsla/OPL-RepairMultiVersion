@@ -86,7 +86,7 @@ public class MainTest {
 	URLClassLoader classLoader = URLClassLoader.newInstance(urls);
 		File dir = new File(dirPath);
 		File[] resources = dir.listFiles();
-		ArrayList<File> dirs = new ArrayList<>();
+		ArrayList<File> dirs = new ArrayList<File>();
 		ArrayList classes = new ArrayList();
 		for (File file:resources ) {
 			if(file.isDirectory()) {
