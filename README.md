@@ -70,12 +70,13 @@ If a GUI is developped, we can also provide the functionnality that a user selec
 
 ## Limitation
 
- - Le projet que l'on souhaite testé et réparer via notre outil devra obligatoirement être en Java.
- - Il faut que le projet avec lequel on veut utiliser cet outil soit déjà bien testé unitairement sinon on ne pourra rien en tirer puisque notre projet utilise ces tests pour pouvoir trouver à travers les versions une façon de réparer notre application.
- - Il ne faut pas que le projet soit trop grand sinon il faut limité le nombre de commit
+ - For now, the project we want to test and repair via our tool must be written in Java.
+ - The unit tests written for the project must be well written otherwise the tool will not be able to draw anything from it since our project uses these tests to be able to find through the versions a way to repair the application.
+ - The project should not be too large otherwise it is necessary to limit the number of commits.
 
 ## Discussion
-Dans tout projet, lorsque nous réalisons des tests unitaires c'est dans un but précis, empêcher la régression. Avec ces tests unitaires le développeur s'en sers pour s'assurer au fur et à mesure des versions qu'il développe qu'il ne casse rien d'existant. S'il y a une erreur les tests ne passeront plus et le développeur sera directement conscient d'une régression. L'utilité de l'outils que nous proposons aujourd'hui pourrait être à débattre donc puisque pour utiliser cet outil le développeur a besoin d'avoir de bons tests dans son code mais s'il a des bons tests normalement il n'effectue pas de régression ou bien si c'est le cas il en est conscient. Dans ce cas de figure l'utilité de notre outil devient assez faible.
+We use unit tests in our tool for a specific purpose: prevent regression. Those unit tests are used by developers to assure that each new version that they develop don’t break the current content.
+If errors occur the tests will no longer pass and developers will be directly aware of the regression. The utility of the tool that we propose can be discussed because this tool relies on good unit tests. But normally if those unit tests are good, developers don’t do regression (or if they do, they are aware of it). It this case, the utility of our tool is reduced.
 
 ## Conclusion
 ## Glossary
