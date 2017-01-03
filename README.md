@@ -10,22 +10,22 @@ OPL - Theme 3: Automatic Diagnosis and Repair
 
 **Table of Contents**
 
-- [Repair with multi-version execution ](#)
-	- [Introduction](#)
-	- [Technical work](#)
-		- [Goal](#)
-		- [Overview](#)
-		- [Algorithm](#)
-		- [Architecture](#)
-		- [Use](#)
-	- [Evaluation](#)
-	- [Ease of use](#)
-	- [Performance](#)
-	- [Limitation](#)
-	- [Discussion](#)
-	- [Conclusion](#)
-	- [Glossary](#)
-	- [References](#)
+- [Repair with multi-version execution](#Repair with multi-version execution)
+	- [Introduction](#Introduction)
+	- [Technical work](#Technical work)
+		- [Goal](#Goal)
+		- [Overview](#Overview)
+		- [Algorithm](#Algorithm)
+		- [Architecture](#Architecture)
+		- [Use](#Use)
+	- [Evaluation](#Evaluation)
+	- [Ease of use](#Ease of use)
+	- [Performance](#Performance)
+	- [Limitation](#Limitation)
+	- [Discussion](#Discussion)
+	- [Conclusion](#Conclusion)
+	- [Glossary](#Glossary)
+	- [References](#References
 
 ## Introduction
 
