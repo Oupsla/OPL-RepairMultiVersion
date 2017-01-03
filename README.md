@@ -27,16 +27,12 @@ Our application is an improvement of the existing prototype [Code rewinder](http
 
 We get into this problem using a simple but effective multiversion based approach. First, we generate a special version of the given program. This special version includes several versions of the program using the version manager. Then, our application works dynamically to run unit tests on all those differents versions. We can finaly observe the tracing of those tests.
 
-Our goal is to improve the software update process in such a way as to encourage developpers to run the unit tests also on old versions of the software.
-
 ## Technical work
 ### Goal
-Notre objectif principal lors de la réalisation de ce projet a été de rendre ce projet plus facilement utilisable (agnostique du système d'exploitation, meilleure interface de commandes, ...).
+Our goal is to improve the software update process in such a way as to encourage developpers to run the unit tests also on old versions of the software. We did this by improving the existing prototype which was just a little beginning and not easy to use.
 
 ### Overview
-(Mockups, workflows)
-
-### Algorithm
+![working_scheme](https://postimg.org/image/5r5p1nah3/ "How it works ?")
 
 ### Architecture
 We retrieved the project [Code rewinder](https://github.com/dufaux/IDL-1) that was coded in Java so we decided to keep this language for our implementation. Not only because a base was already existing in Java, but also because of compatibility with [Spoon](http://spoon.gforge.inria.fr/ "spoon"), the library shortly described below that we used to extract methods from a project and modify them.
