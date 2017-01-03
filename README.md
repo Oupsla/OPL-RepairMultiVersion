@@ -14,6 +14,7 @@ OPL - Theme 3: Automatic Diagnosis and Repair
 - **[Discussion](#discussion)**
 - **[Conclusion](#conclusion)**
 - **[Glossary](#glossary)**
+- **[References](#references)**
 
 ## Introduction
 
@@ -26,16 +27,12 @@ Our application is an improvement of the existing prototype [Code rewinder](http
 
 We get into this problem using a simple but effective multiversion based approach. First, we generate a special version of the given program. This special version includes several versions of the program using the version manager. Then, our application works dynamically to run unit tests on all those differents versions. We can finaly observe the tracing of those tests.
 
-Our goal is to improve the software update process in such a way as to encourage developpers to run the unit tests also on old versions of the software.
-
 ## Technical work
-### But
-Notre objectif principal lors de la réalisation de ce projet a été de rendre ce projet plus facilement utilisable (agnostique du système d'exploitation, meilleure interface de commandes, ...).
+### Goal
+Our goal is to improve the software update process in such a way as to encourage developpers to run the unit tests also on old versions of the software. We did this by improving the existing prototype which was just a little beginning and not easy to use.
 
 ### Overview
-(Mockups, workflows)
-
-### Algorithm
+![working_scheme](https://s30.postimg.org/8fp73h4b5/15870726_10154268280013177_490723363_n.png/ "How it works ?")
 
 ### Architecture
 We retrieved the project [Code rewinder](https://github.com/dufaux/IDL-1) that was coded in Java so we decided to keep this language for our implementation. Not only because a base was already existing in Java, but also because of compatibility with [Spoon](http://spoon.gforge.inria.fr/ "spoon"), the library shortly described below that we used to extract methods from a project and modify them.
@@ -46,7 +43,7 @@ For the creation of different versions of a project that we want to test and rep
 
 [Spoon](https://github.com/INRIA/spoon) is an open source library to analyze, rewrite, transform, transpile Java source code. It parses source files to build a well-designed AST with powerful analysis and transformation API. The role of [Spoon](https://github.com/INRIA/spoon) in this project is to extract the methods of  each version and to replace them with those from the last version.
 
-### Utilisation
+### Use
 (screenshots, etc)
 
 ## Evaluation
@@ -77,7 +74,7 @@ If a GUI is developped, we can also provide the functionnality that a user selec
 We use unit tests in our tool for a specific purpose: prevent regression. Those unit tests are used by developers to assure that each new version that they develop don’t break the current content.
 If errors occur the tests will no longer pass and developers will be directly aware of the regression. The utility of the tool that we propose can be discussed because this tool relies on good unit tests. But normally if those unit tests are good, developers don’t do regression (or if they do, they are aware of it). It this case, the utility of our tool is reduced.
 
-We can imagine our tool in the future combined with multi-version execution or [JAFF](ftp://ftp.cs.bham.ac.uk/pub/tech-reports/2009/CSR-09-02.pdf).
+We can imagine our tool in the future combined with multi-version execution or [JAFF](https://goo.gl/K4Nb3g).
 
 Multi-version execution tools run a new version in parallel with an old one. Then, by selecting the output of the more reliable version when their executions diverge, it can increase the overall reliability of the software. The goal is to have the multi-version software system be at least as reliable and secure as each individual version by itself.
 
@@ -93,6 +90,4 @@ Software update cannot be avoided during the maintenance process. It also presen
  - [Safe Software Updates via Multi-version Execution](http://srg.doc.ic.ac.uk/files/papers/mx-icse-13.pdf)
  - [Object-Level Recombination of Commodity Applications](http://people.scs.carleton.ca/~soma/pubs/bfoster-gecco-2010.pdf)
  - [Spoon](http://spoon.gforge.inria.fr/)
- - [Evolutionary Repair of Faulty Software](ftp://ftp.cs.bham.ac.uk/pub/tech-reports/2009/CSR-09-02.pdf)
- - 
- 
+ - [Evolutionary Repair of Faulty Software](https://goo.gl/K4Nb3g)
