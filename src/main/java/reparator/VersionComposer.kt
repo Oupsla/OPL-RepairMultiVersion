@@ -1,6 +1,7 @@
 @file:JvmName(name = "VersionComposer")
 package reparator
 
+import org.json.JSONObject
 import java.io.File
 import java.util.*
 import javax.tools.ToolProvider
@@ -17,11 +18,13 @@ import javax.tools.ToolProvider
     private val byteCodeRoot: String
         get() = "./spooned/bin/"
 
-    val junitJar: String
-        get() = "C:/Users/Apolloch/.m2/repository/junit/junit/4.12/junit-4.12.jar"
+    private val conf_file: String
+        get() = "./app_conf.json"
 
     fun compileSourceCode() {
-
+        var configContent = ""
+        File(conf_file).forEachLine { configContent+=it }
+        var junitJar = JSONObject(configContent).getString("junit_jar")
         val sourceDir = File(sourceRoot)
         val testSourceDir = File(testSourceRoot)
         val byteCodeDir = File(byteCodeRoot)

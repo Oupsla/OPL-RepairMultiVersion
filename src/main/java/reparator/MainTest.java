@@ -19,14 +19,14 @@ public class MainTest {
 
 	static List<Class<?>> projectClasses = new ArrayList<Class<?>>();
 	static List<Class<?>> testsClasses = new ArrayList<Class<?>>();
-	private static String classesToTestDir = "C:/Users/Apolloch/IdeaProjects/OPL-RepairMultiVersion/spooned/bin/";
+	private static String classesToTestDir = new File("./spooned/bin/").getAbsolutePath()+"/";
 
 	public static void main(String[] args) throws Exception {
 		runAllTests();
 	}
 
 	public static void runAllTests() throws ClassNotFoundException, IOException, IllegalAccessException {
-
+		System.out.println(classesToTestDir);
 		Class[] allClasses = getClasses(classesToTestDir);
 		for(Class<?> c : allClasses){
             if(c.getName().endsWith("Test")){

@@ -2,12 +2,11 @@ package reparator;
 
 import org.apache.commons.cli.*;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.json.JSONObject;
 import spoon.Launcher;
 import util.GitUtils;
 
-import java.io.File;
-import java.io.FilenameFilter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class App {
@@ -24,8 +23,21 @@ public class App {
 	public static void main(String[] args) {
 
 		// Uncomment this to try with something else
+		String configContent = "";
 
-		reparator("Oupsla", "OPL-TestRepo", "src/main/" , "C:/Users/Apolloch/.m2/repository/junit/junit/4.12/junit-4.12.jar", 2);
+		File confFile = new File("app_conf.json");
+		try {
+			BufferedReader fileReader = new BufferedReader(new FileReader(confFile));
+			String line ;
+			while((line = fileReader.readLine()) != null) {
+				configContent+=line;
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		JSONObject config = new JSONObject(configContent);
+
+		reparator(config.getString("github_user_name"),config.getString("github_project"), config.getString("src_path_in_project"), config.getString("junit_jar"), 2);
 
 		if(true)
 			return;
