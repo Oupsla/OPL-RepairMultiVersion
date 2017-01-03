@@ -4,6 +4,7 @@ import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.*;
 import spoon.reflect.declaration.*;
 import spoon.reflect.factory.Factory;
+import spoon.reflect.factory.TypeFactory;
 import spoon.reflect.reference.CtTypeReference;
 import spoon.support.reflect.code.CtReturnImpl;
 
@@ -91,14 +92,14 @@ public class MethodVersioningProcessor extends AbstractProcessor<CtClass> {
 		CtReturn retur = null;
 		
 
-		CtTypeReference refToInt = getFactory().Code().createCtTypeReference(Integer.class);
+		CtTypeReference refToInt = new TypeFactory(getFactory()).INTEGER_PRIMITIVE;//getFactory().Code().createCtTypeReference(Integer.class);
 		
 		//create versionField
-		CtField versionField = getFactory().Code().createCtField(methodeSource.getSimpleName()+"_version",refToInt,"0", ModifierKind.FINAL, ModifierKind.PRIVATE, ModifierKind.STATIC);
+		CtField versionField = getFactory().Code().createCtField(methodeSource.getSimpleName()+"_version",refToInt,"0", ModifierKind.PUBLIC, ModifierKind.STATIC);
 		ctClass.addField(versionField);
 		
 		//create versionMaxField
-		CtField versionMaxField = getFactory().Code().createCtField(methodeSource.getSimpleName()+"_version_max",refToInt,Integer.toString(methodesDeVersions.size()-1), ModifierKind.FINAL, ModifierKind.PRIVATE, ModifierKind.STATIC);
+		CtField versionMaxField = getFactory().Code().createCtField(methodeSource.getSimpleName()+"_version_max",refToInt,Integer.toString(methodesDeVersions.size()-1), ModifierKind.PUBLIC, ModifierKind.STATIC);
 		ctClass.addField(versionMaxField);
 		
 		// create b1 = block vide de ctmethod

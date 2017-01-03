@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class App {
 
 	// Folder to store git revisions
-	public static final String TMPFOLDER = "/tmp/opl/";
+	public static final String TMPFOLDER = "C:\\Users\\Apolloch\\IdeaProjects\\OPL-RepairMultiVersion\\tmp\\opl";
 
 	private static ArrayList<VersionSniper> snipers;
 
@@ -25,7 +25,7 @@ public class App {
 
 		// Uncomment this to try with something else
 
-		reparator("Oupsla", "OPL-TestRepo", "src/main/" , "/home/nicolas/Téléchargements/junit-4.12.jar", 2);
+		reparator("Oupsla", "OPL-TestRepo", "src/main/" , "C:/Users/Apolloch/.m2/repository/junit/junit/4.12/junit-4.12.jar", 2);
 
 		if(true)
 			return;
@@ -104,7 +104,17 @@ public class App {
 		Launcher spoon = new Launcher();
 		spoon.addProcessor(new MethodVersioningProcessor(snipers));
         spoon.run(new String[]{"-i", TMPFOLDER + gitProject + "/master" +  "/" + srcPath, "--source-classpath", classPath});
-        System.out.println("---- End of program ----");
+		VersionComposer.compileSourceCode();
+		try {
+			MainTest.runAllTests();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+		System.out.println("---- End of program ----");
         
 	}
 
