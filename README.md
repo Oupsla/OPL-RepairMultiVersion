@@ -77,10 +77,20 @@ If a GUI is developped, we can also provide the functionnality that a user selec
 We use unit tests in our tool for a specific purpose: prevent regression. Those unit tests are used by developers to assure that each new version that they develop don’t break the current content.
 If errors occur the tests will no longer pass and developers will be directly aware of the regression. The utility of the tool that we propose can be discussed because this tool relies on good unit tests. But normally if those unit tests are good, developers don’t do regression (or if they do, they are aware of it). It this case, the utility of our tool is reduced.
 
+We can imagine our tool in the future combined with multi-version execution or [JAFF](ftp://ftp.cs.bham.ac.uk/pub/tech-reports/2009/CSR-09-02.pdf).
+
+Multi-version execution tools run a new version in parallel with an old one. Then, by selecting the output of the more reliable version when their executions diverge, it can increase the overall reliability of the software. The goal is to have the multi-version software system be at least as reliable and secure as each individual version by itself.
+
+[Arcuri](https://sites.google.com/site/arcuri82/)’s JAFF can repair faults automatically in Java programs by identifying parts that fail unit tests and evolving limited software patches.
+
+
 ## Conclusion
+Software update cannot be avoided during the maintenance process. It also presents a failure risk and releases can introduce new bugs. We propose a tool able to run multi-version unit tests which is a prove of concept that can automatically prevent regression bugs. Coupled with tools like multi-version execution or JAFF, our goal is to enable both users and developers to benefit from new features and bug fixes provided by new versions, without renouncing the stability of older versions.
+
 ## Glossary
 ## References
 
  - [Safe Software Updates via Multi-version Execution](http://srg.doc.ic.ac.uk/files/papers/mx-icse-13.pdf)
  - [Object-Level Recombination of Commodity Applications](http://people.scs.carleton.ca/~soma/pubs/bfoster-gecco-2010.pdf)
  - [Spoon](http://spoon.gforge.inria.fr/)
+ - ftp://ftp.cs.bham.ac.uk/pub/tech-reports/2009/CSR-09-02.pdf(ftp://ftp.cs.bham.ac.uk/pub/tech-reports/2009/CSR-09-02.pdf)
