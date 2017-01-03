@@ -6,7 +6,15 @@ OPL - Theme 3: Automatic Diagnosis and Repair
 - [Nicolas Delperdange](https://github.com/Oupsla)
 - [Benjamin Coenen](https://github.com/bnjjj)
 
-toc::[]
+## Table of Contents
+- **[Introduction](#introduction)**   
+- **[Technical work](#technical-work)**   
+- **[Evaluation](#evaluation)**
+- **[Limitations](#limitation)**  
+- **[Discussion](#discussion)**
+- **[Conclusion](#conclusion)**
+- **[Glossary](#glossary)**
+- **[References](#references)**
 
 ## Introduction
 
