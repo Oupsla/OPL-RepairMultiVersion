@@ -38,13 +38,13 @@ Notre objectif principal lors de la réalisation de ce projet a été de rendre 
 ### Algorithm
 
 ### Architecture
-We retrieved the project rewinder that was coded in Java so we decided to keep this language for our implementation. Not only because a base was already existing in Java, but also because of compatibility with [Spoon](http://spoon.gforge.inria.fr/ "spoon"), the library shortly described below that we used to extract methods from a project and modify them.
+We retrieved the project [Code rewinder](https://github.com/dufaux/IDL-1) that was coded in Java so we decided to keep this language for our implementation. Not only because a base was already existing in Java, but also because of compatibility with [Spoon](http://spoon.gforge.inria.fr/ "spoon"), the library shortly described below that we used to extract methods from a project and modify them.
 
 Besides the Java code, this project is also composed of [Kotlin](https://kotlinlang.org/) which is a functional oriented object programing language with a static typing that can also be compiled for being executed by the Java Virtual Machine. We implement it because it was fully compatible with Java and it was interesting for us to learn another language so that we could draw some purely technical skills of this project.
 
-For the creation of different versions of a project that we want to test and repair, rewinder creates a simple batch script file that executes bash and git commands. We quickly redo the whole system in order to manage only one code independently of the operating system it is running on. Everything has been rewritten in Java with using [Jgit](https://eclipse.org/jgit "Jgit"), a Java library developed by the [Eclipse Foundation](https://eclipse.org "Eclipse").
+For the creation of different versions of a project that we want to test and repair, [Code rewinder](https://github.com/dufaux/IDL-1) creates a simple batch script file that executes bash and git commands. We quickly redo the whole system in order to manage only one code independently of the operating system it is running on. Everything has been rewritten in Java with using [Jgit](https://eclipse.org/jgit "Jgit"), a Java library developed by the [Eclipse Foundation](https://eclipse.org "Eclipse").
 
-Spoon is an open source library to analyze, rewrite, transform, transpile Java source code. It parses source files to build a well-designed AST with powerful analysis and transformation API. L'utilité de Spoon dans ce projet est d'extraire les méthodes dans chaque versions pour les remplacer avec celles de la dernière version. Pour ce faire ...
+[Spoon](https://github.com/INRIA/spoon) is an open source library to analyze, rewrite, transform, transpile Java source code. It parses source files to build a well-designed AST with powerful analysis and transformation API. The role of [Spoon](https://github.com/INRIA/spoon) in this project is to extract the methods of  each version and to replace them with those from the last version.
 
 ### Utilisation
 (screenshots, etc)
@@ -94,4 +94,5 @@ Software update cannot be avoided during the maintenance process. It also presen
  - [Object-Level Recombination of Commodity Applications](http://people.scs.carleton.ca/~soma/pubs/bfoster-gecco-2010.pdf)
  - [Spoon](http://spoon.gforge.inria.fr/)
  - [Evolutionary Repair of Faulty Software](ftp://ftp.cs.bham.ac.uk/pub/tech-reports/2009/CSR-09-02.pdf)
+ - 
  
