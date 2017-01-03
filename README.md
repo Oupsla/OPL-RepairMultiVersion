@@ -8,8 +8,24 @@ OPL - Theme 3: Automatic Diagnosis and Repair
 
 
 
-## Table of contents
-[TOC]
+**Table of Contents**
+
+- [Repair with multi-version execution ](#)
+	- [Introduction](#)
+	- [Technical work](#)
+		- [Goal](#)
+		- [Overview](#)
+		- [Algorithm](#)
+		- [Architecture](#)
+		- [Use](#)
+	- [Evaluation](#)
+	- [Ease of use](#)
+	- [Performance](#)
+	- [Limitation](#)
+	- [Discussion](#)
+	- [Conclusion](#)
+	- [Glossary](#)
+	- [References](#)
 
 ## Introduction
 
@@ -42,7 +58,7 @@ For the creation of different versions of a project that we want to test and rep
 
 [Spoon](https://github.com/INRIA/spoon) is an open source library to analyze, rewrite, transform, transpile Java source code. It parses source files to build a well-designed AST with powerful analysis and transformation API. The role of [Spoon](https://github.com/INRIA/spoon) in this project is to extract the methods of  each version and to replace them with those from the last version.
 
-### Utilisation
+### Use
 (screenshots, etc)
 
 ## Evaluation
