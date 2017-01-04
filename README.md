@@ -45,13 +45,13 @@ For the creation of different versions of a project that we want to test and rep
 
 ### Use
 Simply configure the app via the app_conf.json file then compile with maven (cmd : "mvn compile") then run the class main.App
-the config file should look like this:
-{
-  "junit_jar":"C:/Users/Apolloch/.m2/repository/junit/junit/4.12/junit-4.12.jar",
-  "github_project":"OPL-TestRepo",
-  "github_user_name":"Oupsla",
-  "src_path_in_project" : "src/main/"
-}
+the config file should look like this:<br/>
+{<br/>
+  "junit_jar":"C:/Users/Apolloch/.m2/repository/junit/junit/4.12/junit-4.12.jar",<br/>
+  "github_project":"OPL-TestRepo",<br/>
+  "github_user_name":"Oupsla",<br/>
+  "src_path_in_project" : "src/main/"<br/>
+}<br/>
 with :
 * junit_jar : the location of junit
 * github_project : the project to test
