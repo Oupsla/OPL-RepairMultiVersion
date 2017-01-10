@@ -26,7 +26,7 @@ class TestToRename {
 
     @Test
     fun testGitUtils() {
-        Assert.assertEquals(GitUtils.cloneRepo("https://github.com/Oupsla/OPL-TestRepo", "test-repo"), "C:\Users\Apolloch\IdeaProjects\OPL-RepairMultiVersion\tmp\opltest-repo/master/.git")
+        Assert.assertEquals(GitUtils.cloneRepo("https://github.com/Oupsla/OPL-TestRepo", "test-repo"), "C:\\Users\\Apolloch\\IdeaProjects\\OPL-RepairMultiVersion\\tmp\\opltest-repo/master/.git")
     }
 
     @Ignore
