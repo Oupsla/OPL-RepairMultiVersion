@@ -61,7 +61,7 @@ with :
 ## Evaluation
 The software we produced is achieving the goal we expressed in the first part of this report.
 here is an example of the production of this software :
-
+```
 gitUsername = Oupsla
 gitProject = OPL-TestRepo
 srcPath = src/main/
@@ -90,7 +90,7 @@ fooA : 0
 barA : 0
 
 ---- End of program ----
-
+```
 The program effectively retrieve all the commits of the project , and test all the versions creates from thoses commits with the latests tests.If the program find a test-passing version it says wich version it found.
 ## Ease of use
 The project has been refactored to not use a bash script to retrieve all the versions of a github repository. This mean that the project is not limited by this script anymore and can be use on any platform.  
