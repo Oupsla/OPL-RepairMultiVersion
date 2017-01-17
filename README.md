@@ -39,19 +39,21 @@ We retrieved the project [Code rewinder](https://github.com/dufaux/IDL-1) that w
 
 Besides the Java code, this project is also composed of [Kotlin](https://kotlinlang.org/) which is a functional oriented object programing language with a static typing that can also be compiled for being executed by the Java Virtual Machine. We implement it because it was fully compatible with Java and it was interesting for us to learn another language so that we could draw some purely technical skills of this project.
 
-For the creation of different versions of a project that we want to test and repair, [Code rewinder](https://github.com/dufaux/IDL-1) creates a simple batch script file that executes bash and git commands. We quickly redo the whole system in order to manage only one code independently of the operating system it is running on. Everything has been rewritten in Java with using [Jgit](https://eclipse.org/jgit "Jgit"), a Java library developed by the [Eclipse Foundation](https://eclipse.org "Eclipse").
+For the creation of different versions of a project that we want to test and repair, [Code rewinder](https://github.com/dufaux/IDL-1) creates a simple batch script file that executes bash and git commands. We quickly modified the whole system in order to manage only one code independently of the operating system it is running on. Everything has been rewritten in Java with using [Jgit](https://eclipse.org/jgit "Jgit"), a Java library developed by the [Eclipse Foundation](https://eclipse.org "Eclipse").
 
 [Spoon](https://github.com/INRIA/spoon) is an open source library to analyze, rewrite, transform, transpile Java source code. It parses source files to build a well-designed AST with powerful analysis and transformation API. The role of [Spoon](https://github.com/INRIA/spoon) in this project is to extract the methods of  each version and to replace them with those from the last version.
 
 ### Use
 Simply configure the app via the app_conf.json file then compile with maven (cmd : "mvn compile") then run the class main.App
 the config file should look like this:<br/>
+```
 {<br/>
   "junit_jar":"C:/Users/Apolloch/.m2/repository/junit/junit/4.12/junit-4.12.jar",<br/>
   "github_project":"OPL-TestRepo",<br/>
   "github_user_name":"Oupsla",<br/>
   "src_path_in_project" : "src/main/"<br/>
 }<br/>
+```
 with :
 * junit_jar : the location of junit
 * github_project : the project to test
@@ -93,16 +95,16 @@ barA : 0
 ```
 The program effectively retrieve all the commits of the project , and test all the versions creates from thoses commits with the latests tests.If the program find a test-passing version it says wich version it found.
 ## Ease of use
-The project has been refactored to not use a bash script to retrieve all the versions of a github repository. This mean that the project is not limited by this script anymore and can be use on any platform.  
-The user can launch our script simply by providing a github username and a project name (this project must be public) and our system will take care of everything.
+The project has been refactored in order to not use a bash script to retrieve all the versions of a github repository. This mean that the project is not limited by this script anymore and can be used on any platform.  
+The user can launch our script by simply providing a github username and a project name (the project must be public) and our system will take care of everything.
 We could have provided a GUI but at this point it seemed unnecessary because our system does not have many options or alternatives of treatment.
 
 
 ## Performance
 The base of our system retrieve all versions of a project but in most of projects, there are a lot of commits and branches so we had to change that.
-The user can now specify a number of commits (from the most recent to the number) that the script will retrieve. The execution time is therefore relative to the number of commit that our system has to process. This mean that the user have to select between efficiency or speed.
+The user can now specify a number of commits (from the most recent to the specified number) that the script will retrieve. The execution time is therefore relative to the number of commits that our system has to process. This means that the user have to select between efficiency or speed.
 
-If a GUI is developped, we can also provide the functionnality that a user select revelant commit (it is not necessary for example, to select a commit that edit documentation because this version will not resolve a test).
+If a GUI was developped, we could also provide a feature where the user can select relevant commit (for example, it would be not necessary to select a commit that edits documentation because this version will not resolve a test).
 
 ## Limitation
 
