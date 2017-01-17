@@ -42,12 +42,19 @@ public class MainTest {
 
                     Field vfield = c.getDeclaredField((m.getName()+"_version"));
                     Field vmaxfield = c.getDeclaredField(m.getName()+"_version_max");
-
+					int version = -1;
                     System.out.println("MODIF METHOD "+m.getName());
                      while(vfield.getInt(null) <= vmaxfield.getInt(null)){
-                         runTests();
+						 if(runTests()){
+						 	version = vfield.getInt(null);
+						 }
+
                          vfield.setInt(null, vfield.getInt(null)+1);
+
                      }
+                     if(version!=-1){
+                     	System.out.println("Version found : "+version);
+					 }
                 }catch(NoSuchFieldException e){
                     //ne rien faire
                 }

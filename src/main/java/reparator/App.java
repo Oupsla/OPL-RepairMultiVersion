@@ -104,9 +104,11 @@ public class App {
 		});
 
 		// Adding sniper to version subfolder
+		int i = 0 ;
 		for(String version: directories){
-			if(!version.toLowerCase().contains("master"))
-				snipers.add(new VersionSniper(gitProject, version, srcPath, classPath));
+			if(!version.toLowerCase().contains("master")) {
+				snipers.add(new VersionSniper(gitProject, version, srcPath, classPath,i++));
+			}
 		}
 
 		System.out.println("Spoon the master as the new project template = "

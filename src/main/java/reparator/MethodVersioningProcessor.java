@@ -57,6 +57,7 @@ public class MethodVersioningProcessor extends AbstractProcessor<CtClass> {
 	private CtMethod createVersionMethod(CtMethod<?> method, VersionSniper sniper) {
 		Factory factory = sniper.getFactory();
 		int version = sniper.getId();
+		System.out.println("version"+version);
 		
 		CtType parent = method.getParent(CtType.class);
 		for(CtType c : factory.Class().getAll()){
