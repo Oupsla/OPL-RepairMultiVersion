@@ -120,7 +120,7 @@ public class App {
         spoon.run(new String[]{"-i", TMPFOLDER + gitProject + "/master" +  "/" + srcPath, "--source-classpath", classPath});
 		VersionComposer.compileSourceCode();
 		try {
-			MainTest.runAllTests();
+			MainTest.runAllTests(snipers);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

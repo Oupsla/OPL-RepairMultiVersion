@@ -57,8 +57,7 @@ public class MethodVersioningProcessor extends AbstractProcessor<CtClass> {
 	private CtMethod createVersionMethod(CtMethod<?> method, VersionSniper sniper) {
 		Factory factory = sniper.getFactory();
 		int version = sniper.getId();
-		System.out.println("version"+version);
-		
+
 		CtType parent = method.getParent(CtType.class);
 		for(CtType c : factory.Class().getAll()){
 			
@@ -93,8 +92,9 @@ public class MethodVersioningProcessor extends AbstractProcessor<CtClass> {
 		CtReturn retur = null;
 		
 
-		CtTypeReference refToInt = new TypeFactory(getFactory()).INTEGER_PRIMITIVE;//getFactory().Code().createCtTypeReference(Integer.class);
-		
+		CtTypeReference refToInt = new TypeFactory(getFactory()).INTEGER_PRIMITIVE;
+		CtTypeReference refToString = new TypeFactory(getFactory()).STRING;
+
 		//create versionField
 		CtField versionField = getFactory().Code().createCtField(methodeSource.getSimpleName()+"_version",refToInt,"0", ModifierKind.PUBLIC, ModifierKind.STATIC);
 		ctClass.addField(versionField);

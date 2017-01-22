@@ -8,9 +8,11 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -21,12 +23,14 @@ public class MainTest {
 	static List<Class<?>> testsClasses = new ArrayList<Class<?>>();
 	private static String classesToTestDir = new File("./spooned/bin/").getAbsolutePath()+"/";
 
-	public static void main(String[] args) throws Exception {
-		runAllTests();
-	}
 
-	public static void runAllTests() throws ClassNotFoundException, IOException, IllegalAccessException {
+	public static void runAllTests(ArrayList<VersionSniper> snipers) throws ClassNotFoundException, IOException, IllegalAccessException {
 		Class[] allClasses = getClasses(classesToTestDir);
+		HashMap<Integer,String> versionsById = new HashMap<>();
+		for (VersionSniper version:snipers) {
+			versionsById.put(version.getId(),version.getVersion());
+		}
+		System.out.println("------ Run Tests ------");
 		for(Class<?> c : allClasses){
             if(c.getName().endsWith("Test")){
                 testsClasses.add(c);
@@ -35,31 +39,49 @@ public class MainTest {
             }
         }
 
+		int version=-1;
+		Method methodToChange = null;
+		Class classToChange=null ;
 		for(Class<?>c : projectClasses){
-            System.out.println("MODIF CLASS "+c.getName());
-            for(Method m : c.getDeclaredMethods()){
-                try{
+			System.out.println("MODIF CLASS "+c.getName());
+			for(Method m : c.getDeclaredMethods()){
+				try{
 
-                    Field vfield = c.getDeclaredField((m.getName()+"_version"));
-                    Field vmaxfield = c.getDeclaredField(m.getName()+"_version_max");
-					int version = -1;
-                    System.out.println("MODIF METHOD "+m.getName());
+					Field vfield = c.getDeclaredField((m.getName()+"_version"));
+					Field vmaxfield = c.getDeclaredField(m.getName()+"_version_max");
+					version = -1;
+					System.out.println("MODIF METHOD "+m.getName());
                      while(vfield.getInt(null) <= vmaxfield.getInt(null)){
 						 if(runTests()){
 						 	version = vfield.getInt(null);
+							 methodToChange = m ;
+							 classToChange = c ;
+							 break;
 						 }
 
                          vfield.setInt(null, vfield.getInt(null)+1);
-
                      }
-                     if(version!=-1){
-                     	System.out.println("Version found : "+version);
-					 }
+					if(version!=-1)
+						break;
+
                 }catch(NoSuchFieldException e){
                     //ne rien faire
                 }
 
-            }
+			}
+			System.out.println("------ Result ------");
+			if(version!=-1){
+				try {
+					System.out.println("Version found : ");
+					System.out.println("all tests are green when using the version of the commit "+versionsById.get(version)+" for the method "+classToChange.getName()+"."+methodToChange.getName());
+					System.out.println("You can modify the files by yourself or just change the value of the field "+methodToChange.getName()+"_version by "+version+" in the file "+classToChange.getResource(classToChange.getSimpleName()+".class").toURI());
+					break;
+				} catch (URISyntaxException e) {
+					e.printStackTrace();
+				}
+			}else{
+				System.out.println("No Version Found");
+			}
         }
 	}
 
