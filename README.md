@@ -70,28 +70,36 @@ gitUsername = Oupsla
 gitProject = OPL-TestRepo
 srcPath = src/main/
 classPath = C:/Users/Apolloch/.m2/repository/junit/junit/4.12/junit-4.12.jar
-number of commits = 2
-Calling Git to generate 2 folders from : https://github.com/Oupsla/OPL-TestRepo
+number of commits = 3
+Calling Git to generate 3 folders from : https://github.com/Oupsla/OPL-TestRepo
 Cloning from https://github.com/Oupsla/OPL-TestRepo to C:\Users\Apolloch\IdeaProjects\OPL-RepairMultiVersion\tmp\oplOPL-TestRepo\master
 Cloning repository: C:\Users\Apolloch\IdeaProjects\OPL-RepairMultiVersion\tmp\oplOPL-TestRepo\master\.git
 Commits of branch: refs/heads/master
+\-------------------------------------
 Cloning repository from commit : bb5d35f3b98986b73cda28092f1858390e48548d to C:\Users\Apolloch\IdeaProjects\OPL-RepairMultiVersion\tmp\oplOPL-TestRepo\bb5d35f3b98986b73cda28092f1858390e48548d
 Cloning repository from commit : 3e0211fa3b8ca145543356707c90f63c70754aad to C:\Users\Apolloch\IdeaProjects\OPL-RepairMultiVersion\tmp\oplOPL-TestRepo\3e0211fa3b8ca145543356707c90f63c70754aad
-Number of max commit reached : 2
+Cloning repository from commit : e1b39df35bb4ee1f31f7827ceea093a527dd532a to C:\Users\Apolloch\IdeaProjects\OPL-RepairMultiVersion\tmp\oplOPL-TestRepo\e1b39df35bb4ee1f31f7827ceea093a527dd532a
+Number of max commit reached : 3
 Adding sniper to C:\Users\Apolloch\IdeaProjects\OPL-RepairMultiVersion\tmp\oplOPL-TestRepo/3e0211fa3b8ca145543356707c90f63c70754aad/src/main/
 with classPath = C:/Users/Apolloch/.m2/repository/junit/junit/4.12/junit-4.12.jar
 Adding sniper to C:\Users\Apolloch\IdeaProjects\OPL-RepairMultiVersion\tmp\oplOPL-TestRepo/bb5d35f3b98986b73cda28092f1858390e48548d/src/main/
 with classPath = C:/Users/Apolloch/.m2/repository/junit/junit/4.12/junit-4.12.jar
+Adding sniper to C:\Users\Apolloch\IdeaProjects\OPL-RepairMultiVersion\tmp\oplOPL-TestRepo/e1b39df35bb4ee1f31f7827ceea093a527dd532a/src/main/
+with classPath = C:/Users/Apolloch/.m2/repository/junit/junit/4.12/junit-4.12.jar
 Spoon the master as the new project template = C:\Users\Apolloch\IdeaProjects\OPL-RepairMultiVersion\tmp\oplOPL-TestRepo/master/src/main/
 with classPath = C:/Users/Apolloch/.m2/repository/junit/junit/4.12/junit-4.12.jar
+\------ Run Tests ------
 MODIF CLASS main.A
 MODIF METHOD barA
 runCount = 4
 FailureCount = 0
 
-VERSION FOUND :
-fooA : 0
-barA : 0
+\------ Result ------
+Version found :
+all tests are green when using the version of the commit 3e0211fa3b8ca145543356707c90f63c70754aad for the method main.A.barA
+You can modify the files by yourself or just change the value of the field barA_version by 0 in the file file://C:/Users/Apolloch/IdeaProjects/OPL-RepairMultiVersion/spooned/bin/main/A.class
+\---- End of program ----
+
 
 ---- End of program ----
 ```
