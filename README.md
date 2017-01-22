@@ -23,23 +23,25 @@ Software systems are constantly evolving, with new versions and patches being re
 In this work, we propose a technique for improving the reliability and security of software updates. Software updates are an integral part of the software life-cycle, but present a high failure rate. Many users and administrators refuse to upgrade their software and rely instead on outdated versions, which often leaves them exposed to critical bugs and security vulnerabilities. One of the main reasons for which users hesitate to install updates is that a significant number of them result in failures.
 
 We wrote an application that embeds the history of a software application at runtime (using [Spoon](https://github.com/INRIA/spoon)). The evaluation section is an analysis of how it works on a real Github repository.
-Our application is an improvement of the existing prototype [Code rewinder](https://github.com/dufaux/IDL-1). We will evaluate our application by showing that it can successfully detect potential crashes in several real applications.
-
-We get into this problem using a simple but effective multiversion based approach. First, we generate a special version of the given program. This special version includes several versions of the program using the version manager. Then, our application works dynamically to run unit tests on all those differents versions. We can finaly observe the tracing of those tests.
+Our application is a [Code rewinder](https://github.com/dufaux/IDL-1) v2. We will evaluate our application by showing that it can successfully detects potential crashes in several real applications.
 
 ## Technical work
 ### Goal
-Our goal is to improve the software update process in such a way as to encourage developpers to run the unit tests also on old versions of the software. We did this by improving the existing prototype which was just a little beginning and not easy to use.
+Our goal is to improve the software update process in such a way as to encourage developpers to run the unit tests also on old versions of the software. 
+The main goal is to improve the existing prototype and make it really work. An additional goal is also to improve the easy to use.
 
 ### Overview
+
+We get into this problem using a simple but effective multiversion based approach. First, we generate a special version of the given program. This special version includes several versions of the program using the version manager. Then, our application works dynamically to run unit tests on all those differents versions. We can finaly observe the tracing of those tests.
+
 ![working_scheme](https://s30.postimg.org/8fp73h4b5/15870726_10154268280013177_490723363_n.png/ "How it works ?")
 
 ### Architecture
-We retrieved the project [Code rewinder](https://github.com/dufaux/IDL-1) that was coded in Java so we decided to keep this language for our implementation. Not only because a base was already existing in Java, but also because of compatibility with [Spoon](http://spoon.gforge.inria.fr/ "spoon"), the library shortly described below that we used to extract methods from a project and modify them.
+The project is coded in Java and works with [Spoon](http://spoon.gforge.inria.fr/ "spoon"), the library shortly described below that we used to extract methods from a project and modify them.
 
-Besides the Java code, this project is also composed of [Kotlin](https://kotlinlang.org/) which is a functional oriented object programing language with a static typing that can also be compiled for being executed by the Java Virtual Machine. We implement it because it was fully compatible with Java and it was interesting for us to learn another language so that we could draw some purely technical skills of this project.
+There are also parts that are coded in [Kotlin](https://kotlinlang.org/) which is a functional oriented object programing language with a static typing that can also be compiled for being executed by the Java Virtual Machine. It is fully compatible with Java.
 
-For the creation of different versions of a project that we want to test and repair, [Code rewinder](https://github.com/dufaux/IDL-1) creates a simple batch script file that executes bash and git commands. We quickly modified the whole system in order to manage only one code independently of the operating system it is running on. Everything has been rewritten in Java with using [Jgit](https://eclipse.org/jgit "Jgit"), a Java library developed by the [Eclipse Foundation](https://eclipse.org "Eclipse").
+For the creation of different versions of a project that we want to test and repair we used [Jgit](https://eclipse.org/jgit "Jgit") to be OS independent.
 
 [Spoon](https://github.com/INRIA/spoon) is an open source library to analyze, rewrite, transform, transpile Java source code. It parses source files to build a well-designed AST with powerful analysis and transformation API. The role of [Spoon](https://github.com/INRIA/spoon) in this project is to extract the methods of  each version and to replace them with those from the last version.
 
@@ -93,18 +95,12 @@ barA : 0
 
 ---- End of program ----
 ```
-The program effectively retrieve all the commits of the project , and test all the versions creates from thoses commits with the latests tests.If the program find a test-passing version it says wich version it found.
-## Ease of use
-The project has been refactored in order to not use a bash script to retrieve all the versions of a github repository. This mean that the project is not limited by this script anymore and can be used on any platform.  
-The user can launch our script by simply providing a github username and a project name (the project must be public) and our system will take care of everything.
-We could have provided a GUI but at this point it seemed unnecessary because our system does not have many options or alternatives of treatment.
-
 
 ## Performance
+
 The base of our system retrieve all versions of a project but in most of projects, there are a lot of commits and branches so we had to change that.
 The user can now specify a number of commits (from the most recent to the specified number) that the script will retrieve. The execution time is therefore relative to the number of commits that our system has to process. This means that the user have to select between efficiency or speed.
 
-If a GUI was developped, we could also provide a feature where the user can select relevant commit (for example, it would be not necessary to select a commit that edits documentation because this version will not resolve a test).
 
 ## Limitation
 
@@ -122,9 +118,11 @@ Multi-version execution tools run a new version in parallel with an old one. The
 
 [Arcuri](https://sites.google.com/site/arcuri82/)’s JAFF can repair faults automatically in Java programs by identifying parts that fail unit tests and evolving limited software patches.
 
+In the future, we can imagine to provide a GUI but at this point it seemed unnecessary because our system does not have many options or alternatives of treatment. If a GUI is developped, we could also provide a feature where the user can select relevant commit (for example, it would be not necessary to select a commit that edits documentation because this version will not resolve a test).
+
 
 ## Conclusion
-Software update cannot be avoided during the maintenance process. It also presents a failure risk and releases can introduce new bugs. We propose a tool able to run multi-version unit tests which is a prove of concept that can automatically prevent regression bugs. Coupled with tools like multi-version execution or JAFF, our goal is to enable both users and developers to benefit from new features and bug fixes provided by new versions, without renouncing the stability of older versions.
+Software update cannot be avoided during the maintenance process. It also presents a failure risk and releases can introduce new bugs. We propose a tool that matches all our goals, able to run multi-version unit tests which is a prove of concept that can automatically prevent regression bugs. Coupled with tools like multi-version execution or JAFF, our goal is to enable both users and developers to benefit from new features and bug fixes provided by new versions, without renouncing the stability of older versions.
 
 ## Glossary
 ## References
