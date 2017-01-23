@@ -49,12 +49,12 @@ For the creation of different versions of a project that we want to test and rep
 Simply configure the app via the app_conf.json file then compile with maven (cmd : "mvn compile") then run the class main.App
 the config file should look like this:<br/>
 ```
-{<br/>
-  "junit_jar":"C:/Users/Apolloch/.m2/repository/junit/junit/4.12/junit-4.12.jar",<br/>
-  "github_project":"OPL-TestRepo",<br/>
-  "github_user_name":"Oupsla",<br/>
-  "src_path_in_project" : "src/main/"<br/>
-}<br/>
+{
+  "junit_jar":"C:/Users/Apolloch/.m2/repository/junit/junit/4.12/junit-4.12.jar",
+  "github_project":"OPL-TestRepo",
+  "github_user_name":"Oupsla",
+  "src_path_in_project" : "src/main/"
+}
 ```
 with :
 * junit_jar : the location of junit
@@ -107,14 +107,14 @@ You can modify the files by yourself or just change the value of the field barA_
 ## Performance
 
 The base of our system retrieve all versions of a project but in most of projects, there are a lot of commits and branches so we had to change that.
-The user can now specify a number of commits (from the most recent to the specified number) that the script will retrieve. The execution time is therefore relative to the number of commits that our system has to process. This means that the user have to select between efficiency or speed.
+The user can now specify a number of commits (from the most recent to the specified number) that the script will retrieve. The execution time is therefore relative to the number of commits that our system has to process. This means that the user have to select between efficiency or speed. In order to launch without any efforts on public project we have to improve the dependencies management to download all the depencies automatically.
 
 
 ## Limitation
 
  - For now, the project we want to test and repair via our tool must be written in Java.
  - The unit tests written for the project must be well written otherwise the tool will not be able to draw anything from it since our project uses these tests to be able to find through the versions a way to repair the application.
- - The project should not be too large otherwise it is necessary to limit the number of commits.
+ - It's necessary to limit the number of commits in order to have a fast execution.
 
 ## Discussion
 We use unit tests in our tool for a specific purpose: prevent regression. Those unit tests are used by developers to assure that each new version that they develop don’t break the current content.
