@@ -104,11 +104,7 @@ You can modify the files by yourself or just change the value of the field barA_
 ---- End of program ----
 ```
 
-## Performance
-
-The base of our system retrieve all versions of a project but in most of projects, there are a lot of commits and branches so we had to change that.
-The user can now specify a number of commits (from the most recent to the specified number) that the script will retrieve. The execution time is therefore relative to the number of commits that our system has to process. This means that the user have to select between efficiency or speed. In order to launch without any efforts on public project we have to improve the dependencies management to download all the depencies automatically.
-
+Because we don't manage the depedencies, the usability of this project is restraint.
 
 ## Limitation
 
@@ -127,6 +123,8 @@ Multi-version execution tools run a new version in parallel with an old one. The
 [Arcuri](https://sites.google.com/site/arcuri82/)’s JAFF can repair faults automatically in Java programs by identifying parts that fail unit tests and evolving limited software patches.
 
 In the future, we can imagine to provide a GUI but at this point it seemed unnecessary because our system does not have many options or alternatives of treatment. If a GUI is developped, we could also provide a feature where the user can select relevant commit (for example, it would be not necessary to select a commit that edits documentation because this version will not resolve a test).
+
+The base of our system retrieve all versions of a project but in most of projects, there are a lot of commits. Therefore the user can specify a number of commits (from the most recent to the specified number) that the script will retrieve. The execution time is therefore relative to the number of commits that our system has to process. This means that the user have to select between efficiency or speed. In order to launch without any efforts on public project we have to improve the dependencies management to download all the depencies automatically.
 
 
 ## Conclusion
